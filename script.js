@@ -5,10 +5,10 @@
 информация о пользователе ( может изменяться)
  */
 
-const firstName = 'Alex';
-const lastName = 'Kuharenok';
-let age = 34;
-let userInfo = 'Информация о пользователе';
+const firstName;
+const lastName;
+let age;
+let userInfo;
 
 
 //! Что будет в консоле и почему:
