@@ -5,8 +5,8 @@
 информация о пользователе ( может изменяться)
  */
 
-const firstName;
-const lastName;
+const firstName = 'Alex';
+const lastName = 'Kuharenok';
 let age;
 let userInfo;
 
@@ -231,18 +231,20 @@ function firstToUpperCaseFn(str = 'Я стану крутым программи
     let res = [];
     str = str.split(' '); 
 
-    for (let i = 0; i < str.length; i++) {
-        res[i] = str[i][0].toUpperCase() + str[i].slice(1);
+    // for (let i = 0; i < str.length; i++) {
+    //     res[i] = str[i][0].toUpperCase() + str[i].slice(1);
+    // }
+    for (let value of str) {
+        res.push(value[0].toUpperCase() + value.slice(1))
     }
 
-    return res.join(space);
+    return str = res.join(space);
 };
 // console.log(firstToUpperCaseFn());
 
-
 // второй вариант через перебирающий метод Map
 const firstToUpperCaseFnMap = (str = 'привет', space) => { 
-    return str.split(' ')
+    return str = str.split(' ')
             .map(str => str[0].toUpperCase() + str.slice(1))
             .join(space);
 };
@@ -264,12 +266,22 @@ const factorial = (x) => x != 1 ? x * factorial(x - 1): 1;
 // console.log(factorial(9));
 
 //? Создать строку "Просветление наступит через: 10, 9, 8, 7, 6, 5, 4, 3, 2, 1"
-function forFn(y = 'Просветление наступит через:') {
+function forFn(y = 'Просветление наступит через:', z = 10) {
     let x = '';
-    for (let i = 10; i > 0; i--) {
-        x +=` ${i}`; // x += ' ' + i;
-    }
-    return y+x;
+
+    // for (let i = 10; i > 0; i--) {
+    //     x +=` ${i}`; // x += ' ' + i;
+    // }
+
+    // while(z--){
+    //     x +=` ${z+1}`; 
+    // }
+
+    do {
+        x +=` ${z}`; 
+    } while(z--);
+
+    return y + x;
 }
 // console.log(forFn());
 
@@ -279,21 +291,69 @@ function oddFn(x = 1, y = 20) {
         x % 2 ? console.log(x) : false;
     }
 }
-oddFn(1, 20);
+// oddFn(1, 20);
 
 //? На основе строки "теперь я мастер циклов javascript" создать новую строку, где первые буквы каждого слова будут в верхнем регистре и будут отсутствовать пробелы. 
 
-function firstToUpperCaseFnLet(str = 'теперь я мастер циклов javascript', space = '') {
+function firstToUpperCaseFnLet(str = 'теперь я мастер циклов javascript', space = ' ') {
     let res = [];
     str = str.split(' '); 
 
     for (let i = 0; i < str.length; i++) {
         res[i] = str[i][0].toUpperCase() + str[i].slice(1);
     }
-    let res2; 
-    return res2 = res.join(space);
+    let str2; 
+    return  str2 = res.join(space);
 };
-console.log(firstToUpperCaseFnLet());
+// console.log(firstToUpperCaseFnLet('теперь я мастер циклов javascript', ''));
+
+//! Массивы
+
+//? Используя функцию, найти последний элемент массива, не изменяя его.
+const lastEl = (x = []) => x[x.length - 1]; 
+// console.log(lastEl([1, 23, 'last element']));
+
+//? Создать такую функцию, которая принимала бы массив [1,3,6], а возвращала новый массив с дублированными элементами [1,3,6,1,3,6].
+
+const concat = (arr = []) => arr.concat(arr);
+// console.log(concat([1,3,6]));
+
+//? Создать такую функцию, которая принимала бы любое число, а возвращала массив, заполненный числами от 1 до n.
+function arrOfNumber(y = 20) {
+    const arr = [];
+    for (let x = 1; x <= y; x++ ){
+        arr.push(x);
+    }
+    return arr;
+}
+// console.log(arrOfNumber(5));
+
+//? Создать такую функцию, которая принимала бы любое число массивов и удаляла из каждого массива первый элемент, а возвращала массив оставшихся значений ([1, 2, 3], ["x", "y", "z"] → [[2, 3], ["y", "z"]])"
+function arguments () {
+    const arr = [];
+    for (let i = 0; i < arguments.length; i++){
+        //arguments[i].shift();
+        arr.push(arguments[i].slice(1));
+    }
+    return arr;
+}
+// console.log(arguments([1, 2, 3], ["x", "y", "z"]));
+
+//? Создать функцию, которая упорядочит буквы в строке "екважбигёзд" в алфавитном порядке и возвратит строку в обратном порядке ("кизжёедгвба").
+
+const sortReverse = (str = "екважбигёзд") => 
+str
+    .split("")
+    .sort(function (a, b) {
+        return new Intl.Collator().compare(b, a);
+    })
+    .join("");
+
+// console.log(sortReverse());
+
+//? Используя функцию, отсортировать массив [5, 2, -1, 6, 9, -9, 3] в обратном порядке.
+const revers = (arr = [5, 2, -1, 6, 9, -9, 3]) => arr.reverse();
+console.log(revers());
 
 
 
