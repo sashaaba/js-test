@@ -343,7 +343,7 @@ function arguments () {
 //? 7.5 Создать функцию, которая упорядочит буквы в строке "екважбигёзд" в алфавитном порядке и возвратит строку в обратном порядке ("кизжёедгвба").
 
 const sortReverse = (str = "екважбигёзд") => 
-str
+    str
     .split("")
     .sort(function (a, b) {
         return new Intl.Collator().compare(b, a);
@@ -356,3 +356,47 @@ str
 const revers = (arr = [5, 2, -1, 6, 9, -9, 3]) => arr.reverse();
 // console.log(revers());
 
+
+//? 7.7 Создать функцию, которая принимает 3 аргумента: любой произвольный массив начальный номер элемента в массиве конечный номер
+//? Ваша функция должна вернуть новый массив, состоящий из элементов исходного массива согласно аргументам (с-по) (getNewArray(“а, б, в, г, д, е”, 1,3) → [б, в, г]), не изменяя исходный массив и не используя циклы.
+let arr3 = ['а', 'б', 'в', 'г', 'д', 'е'];
+const spliceFn = (arr = ['а', 'б', 'в', 'г', 'д', 'е'], start = 1, end = 3) => (Array.isArray(arr) && Number.isInteger(end) && Number.isInteger(start)) ? arr.slice().splice(start, end) : 'не верно переданы аргументы';
+
+// console.log(spliceFn(arr3, 1, 3), arr3);
+
+//? 7.8 Удвоить элементы массива, не используя циклы.
+const arr4 = [1, 2, 3, 6, 11];
+const doubleElArr = arr => arr.forEach((item, i, arr) => arr[i] *= 2);
+doubleElArr(arr4);
+// console.log(arr4);
+
+//? 7.9 Удалить из массива [1, 2, 3, 4, 5] второй и третий элементы.
+const delElArr = (arr = [1, 2, 3, 4, 5]) => {
+    arr.splice(1, 2); 
+    // console.log(arr);
+};
+delElArr();
+//? 7.10 Удалить из массива [1, 2, 3, 4, 5] второй и третий элементы и на их место вставить “три” и “четыре” соответственно.
+const delAddElArr = (arr = [1, 2, 3, 4, 5]) => {
+    arr.splice(2, 2, 'три', 'четере');
+    // console.log(arr);
+};
+delAddElArr();
+
+//? 7.11 Вставить в произвольный массив любое значение после второго элемента.
+const addToArr = (arr, ind, add) => {
+    arr.splice(ind, 0, add);
+    // console.log(arr);
+};
+addToArr([1, 2, 3, 4, 5], 2, 'два с плюсом');
+
+// let arr4 = [1, 2, 3, 6, 11];
+
+// arr4.forEach((item, i, arr) => arr[i] *= 2)
+
+// console.log(arr4);
+
+// let x = arr1.flat(1);
+// arr1.splice(1, 2);
+// console.log(arr1, x);
+// [1, 2, 3, 4]
