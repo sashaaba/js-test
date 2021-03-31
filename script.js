@@ -359,8 +359,13 @@ const revers = (arr = [5, 2, -1, 6, 9, -9, 3]) => arr.reverse();
 
 //? 7.7 Создать функцию, которая принимает 3 аргумента: любой произвольный массив начальный номер элемента в массиве конечный номер
 //? Ваша функция должна вернуть новый массив, состоящий из элементов исходного массива согласно аргументам (с-по) (getNewArray(“а, б, в, г, д, е”, 1,3) → [б, в, г]), не изменяя исходный массив и не используя циклы.
-let arr3 = ['а', 'б', 'в', 'г', 'д', 'е'];
-const spliceFn = (arr = ['а', 'б', 'в', 'г', 'д', 'е'], start = 1, end = 3) => (Array.isArray(arr) && Number.isInteger(end) && Number.isInteger(start)) ? arr.slice().splice(start, end) : 'не верно переданы аргументы';
+const arr3 = ['а', 'б', 'в', 'г', 'д', 'е'];
+const spliceFn = (arr = ['а', 'б', 'в', 'г', 'д', 'е'], start = 1, end = 3) => {
+    Array.isArray(arr) && Number.isInteger(end) && Number.isInteger(start) 
+        ? arrNew = arr.slice().splice(start, end) 
+        : 'не верно переданы аргументы';
+    return arrNew;
+};
 
 // console.log(spliceFn(arr3, 1, 3), arr3);
 
@@ -390,13 +395,15 @@ const addToArr = (arr, ind, add) => {
 };
 addToArr([1, 2, 3, 4, 5], 2, 'два с плюсом');
 
-// let arr4 = [1, 2, 3, 6, 11];
+//? 7.12 Отсортировать массив массив таким образом, чтобы вначале шли массивы с наименьшей длиной. Создать копию произвольного массив"
 
-// arr4.forEach((item, i, arr) => arr[i] *= 2)
+const arrArrs = [
+    [1, 2, 45, 18, 'test'],
+    ['яблоко', 'апельсин', 'манго', 'груша'],
+    ['alex', 24, 'minsk'],
+    ['3', '97', '42', '24', 'Александр', 'Минск']];
 
-// console.log(arr4);
-
-// let x = arr1.flat(1);
-// arr1.splice(1, 2);
-// console.log(arr1, x);
-// [1, 2, 3, 4]
+const ArrsSortFn = arr => arr.slice().sort((a, b) => a.length - b.length);
+const newArr = ArrsSortFn(arrArrs);
+console.table(arrArrs);
+console.table(newArr);
