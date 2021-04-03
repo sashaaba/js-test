@@ -403,7 +403,82 @@ const arrArrs = [
     ['alex', 24, 'minsk'],
     ['3', '97', '42', '24', 'Александр', 'Минск']];
 
-const ArrsSortFn = arr => arr.slice().sort((a, b) => a.length - b.length);
-const newArr = ArrsSortFn(arrArrs);
-console.table(arrArrs);
-console.table(newArr);
+const arrsSortFn = arr => arr.slice().sort((a, b) => a.length - b.length);
+const newArr = arrsSortFn(arrArrs);
+// console.table(arrArrs);
+// console.table(newArr);
+
+//? 7.13 Отсортировать массив объектов по возрастающему количеству ног животных: [ {kind: "tarantula", info: {legs: 8, eyes: 8}}, {kind: "french bulldog", info: {legs: 4, eyes: 2}}, {kind: "human", info: {legs: 2, eyes: 2}}, {kind: "lobster", info: {legs: 10, eyes: 2}} ]
+
+const arrObjKind = [
+    { kind: "tarantula", info: { legs: 8, eyes: 8 } },
+    { kind: "french bulldog", info: { legs: 4, eyes: 2 } },
+    { kind: "human", info: { legs: 2, eyes: 2 } },
+    { kind: "lobster", info: { legs: 10, eyes: 2 } },
+  ];
+
+const ArrsObjSortFn = arr => arr.sort((a, b) => a.info.legs - b.info.legs);
+
+// console.log(ArrsObjSortFn(arrObjKind));
+
+
+//? Написать функцию, которая принимает массив услуг и два числа, представляющих собой время исполнения услуг, а также возвращает все услуги, находящиеся в диапазоне времени исполнения и отсортированные от меньшего времени исполнения к большему. const services = [ {service: "service1", executionTime: 56}, {service: "service2", executionTime: 97}, {service: "service3", executionTime: 23}, {service: "service4", executionTime: 65}, {service: "service5", executionTime: 2}, {service: "service6", executionTime: 73}, {service: "service7", executionTime: 82}, {service: "service8", executionTime: 19}, {service: "service9", executionTime: 33}, {service: "service10", executionTime: 42}, ]
+// Например, filterServices(services, 20, 60).
+
+const services = [
+    { service: "service1", executionTime: 56 },
+    { service: "service2", executionTime: 97 },
+    { service: "service3", executionTime: 23 },
+    { service: "service4", executionTime: 65 },
+    { service: "service5", executionTime: 2 },
+    { service: "service6", executionTime: 73 },
+    { service: "service7", executionTime: 82 },
+    { service: "service8", executionTime: 19 },
+    { service: "service9", executionTime: 33 },
+    { service: "service10", executionTime: 42 },
+];
+
+const filterServices = (services, x = 20, y = 60) => {
+    return JSON.parse(JSON.stringify(services))
+    .filter(time => time.executionTime >= x && time.executionTime <= y)
+    .sort((a, b) => a.executionTime - b.executionTime);
+};
+
+// console.log(filterServices(services, 20, 60));
+
+//! 8 функции
+//? 8.1 Создать функцию multiply, которая будет принимать любое количество чисел и возвращать их произведение: multiplay(1,2,3) = 6. Если нет ни одного аргумента вернуть ноль.
+
+const multiplay = (...args) => args.length 
+                        ? args.reduce((acc, el) => acc += el , 0) 
+                        : 0;
+// console.log(multiplay(1, 8, 12));
+
+
+//? 8.2 С помощью ри курсе вычислить факториал числа 10.
+
+const factorialRec = (x) => x != 1 ? x * factorial(x - 1): 1;
+// console.log(factorialRec(10));
+
+
+//? 8.3 Создать функцию, которая принимает строку и возвращает перевернутую строку ('test') = 'tset'.
+
+const reversStr = x => [...x].reverse().join('');
+// console.log(reversStr('test'));
+
+
+//? 8.4 Написать функцию, которая проверяет является ли слово палиндромом
+
+const palindrome = str => 
+    [...str.replace(/\s+/g, '')] //  /\s+/g -- регулярное вырожение, нужно разобраться в этом)) \s символ пробела, \s+ один или несколько пробелов
+    .reverse()
+    .join('')
+    .toUpperCase() 
+    == 
+    str.replace(/\s+/g, '')
+    .toUpperCase()
+        ? `строка "${str}" является палиндромом`
+        : `строка "${str}" не палиндром`;
+
+console.log(palindrome('а роза упала на лапу Азора'));
+
