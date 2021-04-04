@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     console.clear();
     // ваш код поместить тут
 
-
     //? 1. Создать функцию которая принимает два. Функция проверяет является ли первый элемент родителям для второго элемента isParent(parent, child) => true || false
 
     const parent = document.querySelector('article');
@@ -18,12 +17,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const prevUl = ul.previousElementSibling;
     // console.log(prevUl);
 
+
     //? 3. Найти параграф и получить его текстовые содержимое
 
     const p = document.querySelector('p');
     const pText = p.innerText
     // console.log(pText);
 
+    
     //? 4. Создать функцию, которая принимает в качестве аргумента узел DOM и возвращает информацию виде объекта о типе узла, имени узла и количестве дочерних узлов.
 
     const nodeObjFn = (node = document.body) => ({
@@ -35,10 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     //? 5. Найти список и добавить ему класс "list"
-    
-    ul.classList.add('list')
-   
+
+    ul.classList.add('list');
+
 });
-
-
-
