@@ -26,21 +26,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //? 4. Создать функцию, которая принимает в качестве аргумента узел DOM и возвращает информацию виде объекта о типе узла, имени узла и количестве дочерних узлов.
 
-    const node = document.querySelector('ul');
-    console.log(ul.nodeName);
+    const nodeObjFn = (node = document.body) => ({
+        typeName: node.nodeType,
+        name: node.nodeName,
+        childCount: node.childElementCount
+    })
+    // console.log(nodeObjFn());
 
 
-
-    // console.log(3);
+    //? 5. Найти список и добавить ему класс "list"
     
+    ul.classList.add('list')
+   
 });
 
 
 
-
-
-
-
-//? 4. Создать функцию, которая принимает в качестве аргумента узел DOM и возвращает информацию виде объекта о типе узла, имени узла и количестве дочерних узлов.
-
-//? 5. Найти список и добавить ему класс "list"
