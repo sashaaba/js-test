@@ -535,5 +535,44 @@ const arrToLowerCase = el => el.toLowerCase();
 // console.log(mapArr(arr, arrToLowerCase));
 
 
+//! Доступ к DOM
+
+//? Получить и вывести в консоль:
+
+//? 1. head
+
+const head = document.querySelector('head');
+// console.log(head);
 
 
+//? 2. body
+
+const body = document.body;
+// console.log(body);
+
+
+//? 3. все дочерние элементы body
+
+const bodyChild = body.children;
+for (let i = 0; i < bodyChild.length; i++) {
+    // console.log(bodyChild[i]);
+}
+
+
+//? 4. первый div и все его дочерние узлы
+
+const bodyFirstChild = body.firstElementChild;
+// console.log(bodyFirstChild);
+
+
+//? 4.1 вывести все дочерние узлы в консоль
+
+const divChild = bodyFirstChild.childNodes;
+// divChild.forEach(el => console.log(el))
+
+
+//? 4.2 вывести все дочерние узлы в консоль кроме первого
+
+for (let i = 1; i < divChild.length; i++) {
+    console.log(divChild[i]);
+}
